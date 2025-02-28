@@ -3,13 +3,15 @@ plugins {
     id 'java-library'
     id 'idea'
     id "maven-publish"
-    id 'com.github.johnrengelman.shadow' version '7.1.2'
+    id 'com.gradleup.shadow' version '8.3.6'
 }
 
-group 'at.ac.tuwien.ifs.sge'
-version '1.0.4'
+group = 'at.ac.tuwien.ifs.sge'
+version = '1.0.4'
 
-sourceCompatibility = 1.11
+java {
+    sourceCompatibility = JavaVersion.VERSION_11
+}
 
 repositories {
     mavenCentral()
@@ -40,48 +42,6 @@ shadowJar {
 javadoc {
     if (JavaVersion.current().isJava9Compatible()) {
         options.addBooleanOption('html5', true)
-    }
-}
-
-publishing {
-    publications {
-        mavenPublication(MavenPublication) {
-            from components.java
-            pom {
-                name = "sge"
-                description = "The core engine library, needed to implement games and agents."
-                licenses {
-                    license {
-                        name = "GNU Affero General Public License version 3"
-                        url = "https://opensource.org/licenses/agpl-v3.html"
-                        distribution = "repo"
-                    }
-                }
-                developers {
-                    developer {
-                        id = "entze"
-                        name = "Lukas Grassauer"
-                        email = "entze@grassauer.eu"
-                    }
-                }
-
-                scm {
-                    url = "https://github.com/Entze/strategy-game-engine"
-                    connection = "https://github.com/Entze/strategy-game-engine.git"
-                    developerConnection = "git@github.com:Entze/strategy-game-engine.git"
-                }
-            }
-        }
-    }
-    repositories {
-        maven {
-            name = "GitHubPackages"
-            url = uri("https://maven.pkg.github.com/Entze/Strategy-Game-Engine")
-            credentials {
-                username = project.findProperty("gpr.user") ?: findProperty("github.actor") ?: System.getenv("GITHUB_ACTOR")
-                password = project.findProperty("gpr.key") ?: findProperty("github.token") ?: System.getenv("GITHUB_TOKEN")
-            }
-        }
     }
 }
 
