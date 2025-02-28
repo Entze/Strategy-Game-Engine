@@ -135,3 +135,4 @@ gradle-app.setting
 AGENT_GUIDE.pdf
 *.pdf
 manual/*.pdf
+manual/versions.yaml

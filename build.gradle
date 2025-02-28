@@ -89,3 +89,22 @@ test {
     useJUnit()
     maxHeapSize = '1G'
 }
+
+tasks.register('generateVersionsYaml') {
+    description = 'Generate versions.yaml file with project metadata'
+    group = 'Documentation'
+
+    doLast {
+        def versionsFile = file('manual/versions.yaml')
+        versionsFile.parentFile.mkdirs()
+
+        def yaml = """
+# Automatically generated from Gradle properties
+SGE_VERSION: ${project.version}
+JAVA_VERSION: ${project.sourceCompatibility}
+""".trim()
+
+        versionsFile.text = yaml
+        println "Generated ${versionsFile.absolutePath}"
+    }
+}

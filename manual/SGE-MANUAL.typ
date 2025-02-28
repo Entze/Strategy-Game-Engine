@@ -1,8 +1,11 @@
 #import "template.typ": manual
 
 #let versions = (
-  SGE_VERSION: "1.0.0",
-  JAVA_VERSION: "11",
+  (
+    SGE_VERSION: "1.0.0",
+    JAVA_VERSION: "11",
+  )
+    + yaml("versions.yaml")
 )
 
 #show: manual.with(
@@ -382,27 +385,31 @@ Through the build tool make sure that following attributes are ensured:
 - Recommended: Game is in classpath
 
 
-  Add the following to your `build.gradle`:
+Add the following to your `build.gradle`:
 
-  ```
-  sourceCompatibility = 1.11
-
-  repositories {
-      maven { url 'https://jitpack.io' }
-  }
-
-  dependencies {
-      implementation("com.gitlab.StrategyGameEngine:Strategy-Game-Engine:v1.0.4")
-  }
-
-  jar {
-    manifest {
-     attributes("Sge-Type": "agent",
-                "Agent-Class": "path.to.actual.agent",
-                "Agent-Name": "The name of the agent")
-    }
-   }
-  ```
+#raw(
+  block: true,
+  lang: "build.gradle",
+  "sourceCompatibility = 1.11\n"
+    + "\n"
+    + "repositories {\n"
+    + "    maven { url 'https://jitpack.io' }\n"
+    + "}\n"
+    + "\n"
+    + "dependencies {\n"
+    + "    implementation(\"com.gitlab.StrategyGameEngine:Strategy-Game-Engine:v"
+    + versions.SGE_VERSION
+    + "\")\n"
+    + "}\n"
+    + "\n"
+    + "jar {\n"
+    + "  manifest {\n"
+    + "    attributes(\"Sge-Type\": \"agent\",\n"
+    + "               \"Agent-Class\": \"path.to.actual.agent\",\n"
+    + "               \"Agent-Name\": \"The name of the agent\")\n"
+    + "  }\n"
+    + "}\n",
+)
 
 === Development Environment
 
