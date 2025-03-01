@@ -20,7 +20,7 @@ repositories {
 dependencies {
 
     implementation("info.picocli:picocli:4.7.6")
-    implementation("com.google.guava:guava:31.1-jre")
+    implementation("com.google.guava:guava:33.4.0-jre")
     testImplementation("junit:junit:4.13.2")
 }
 
