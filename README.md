@@ -1,5 +1,5 @@
 # Strategy Game Engine
-![Gradle 7.6](https://img.shields.io/badge/Gradle-02303A.svg?style=for-the-badge&logo=Gradle&logoColor=white&label=7.6) ![Java](https://img.shields.io/badge/java-%23ED8B00.svg?style=for-the-badge&logo=java&logoColor=white&label=1.11)
+![Gradle 8.13](https://img.shields.io/badge/Gradle-02303A.svg?style=for-the-badge&logo=Gradle&logoColor=white&label=8.13) ![Java](https://img.shields.io/badge/java-%23ED8B00.svg?style=for-the-badge&logo=java&logoColor=white&label=1.11)
 
 A strategy game engine written in Java.
 
@@ -15,7 +15,7 @@ repositories {
 }
 
 dependencies {
-    implementation("com.gitlab.StrategyGameEngine:strategy-game-engine:v1.0.4")
+    implementation("com.gitlab.StrategyGameEngine:strategy-game-engine:v1.0.5")
 }
 
 ```
@@ -29,26 +29,26 @@ This produces four jar files (in `build/libs/`):
 
 One executable
 
-- `sge-1.0.4-exe.jar` (Executable)
+- `sge-1.0.5-exe.jar` (Executable)
 
 And three jars usually used for development
 
-- `sge-1.0.4.jar` (Library)
-- `sge-1.0.4-sources.jar` (Sources)
-- `sge-1.0.4-javadoc.jar` (Documentation)
+- `sge-1.0.5.jar` (Library)
+- `sge-1.0.5-sources.jar` (Sources)
+- `sge-1.0.5-javadoc.jar` (Documentation)
 
 ## Usage
 
 For an extensive overview see:
 ```bash
-java -jar sge-1.0.4-exe.jar --help
+java -jar sge-1.0.5-exe.jar --help
 ```
 
 If you want to let two agents `agent1.jar` and `agent2.jar` play a game of
 `game.jar` against each other run the command:
 
 ```bash
-java -jar sge-1.0.4-exe.jar match game.jar agent1.jar agent2.jar
+java -jar sge-1.0.5-exe.jar match game.jar agent1.jar agent2.jar
 ```
 
 There is also a [manual](https://github.com/Entze/Strategy-Game-Engine/releases/download/v1.0.4/SGE-MANUAL.pdf) available.
